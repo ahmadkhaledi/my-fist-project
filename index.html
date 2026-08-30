@@ -1,0 +1,54 @@
+<!doctype html>
+<html long="FA"DIR="RTL">
+    <head>
+    <meta= charset="UTF-8">
+    <meta name ="viewport" content="width=divice-width, intial-scale=1.0">
+    <title> ماشین حساب </title>
+
+    <link rel="stylesheet" href="calculater.css">
+
+    </head>
+  
+        <body>
+<h1> چه چیزی را محاسبه میکنید؟</h1>
+<ul>
+<li> جمع</li>
+<li> تفریق</li>
+<li> ضرب</li>
+<li> تقسیم</li>
+<li> باقی مانده</li>
+<li> نوان</li>
+</ul>
+<p> اعداد را به انگلیسی وارد کنید </p>
+<h2 class="btn"> بزن بریم</h2>
+
+<br><br>
+            <div class="calculate"> 
+                <input id="num1" type="number" placeholder=" عدد اول">
+                <input id="num2" type="number" placeholder="عدد دوم">
+            
+<div class="button">
+<button id="add" >+</button>
+<button id="subtract">-</button>
+<button id="multiplay">*</button>
+
+</div>
+                <select id="operation">
+                   
+<option value="choice">انتخاب کنید </option>
+<option value="/"> تقسیم /</option>
+<option value="%"> باقی مانده %</option>
+<option value="**">توان **</option>
+            </select>
+            <button id="calculate">محاسبه</button>
+
+<p id="result">نتیجه</p>
+
+            </div>
+        
+          
+            <script src="script.js"></script>
+
+        </body>
+    
+    </html>
