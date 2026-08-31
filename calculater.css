@@ -1,67 +1,152 @@
+/* ==========================================
+   Modern Glassmorphic Calculator Styling
+   ========================================== */
+
+   @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap');
+
+   * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+   }
+   
+   body {
+     min-height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+     background-attachment: fixed;
+     color: #f8fafc;
+     padding: 20px;
+   }
+   ‏/* Container Card */
+main, .calculator-container, form, div:has(input) {
+   background: rgba(255, 255, 255, 0.05);
+   backdrop-filter: blur(16px);
+   -webkit-backdrop-filter: blur(16px);
+   border: 1px solid rgba(255, 255, 255, 0.12);
+   border-radius: 24px;
+   padding: 35px 30px;
+   width: 100%;
+   max-width: 420px;
+   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+               inset 0 1px 1px rgba(255, 255, 255, 0.2);
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+ }
  
-body{ 
-   background-color: rgb(226, 247, 222);
-display: flex;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-justify-content: center
+ /* Headings */
+ h1, h2, h3 {
+   text-align: center;
+   font-weight: 700;
+   font-size: 1.6rem;
+   background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   margin-bottom: 10px;
+ }
+ ‏/* Inputs & Select Elements */
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: #f8fafc;
+  font-size: 1.05rem;
+  direction: ltr;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-p { 
-   color: darkslateblue;
-   padding: 5px;
-   border: 1px solid rgb(11, 9, 61);
+
+input:focus, select:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.25);
+  background: rgba(15, 23, 42, 0.85);
 }
-#result{
- color:rgb(14, 18, 80)
-}
-#caculate{
-background-color: rgb(239, 223, 239);
-  color: rgb(10, 10, 75);
-   padding: 25px;
+‏select {
+   direction: rtl;
+   cursor: pointer;
+   appearance: none;
+   background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+   background-repeat: no-repeat;
+   background-position: left 12px center;
+ }
+ 
+ /* Button Styling */
+ button, input[type="submit"], input[type="button"] {
+   width: 100%;
+   padding: 15px;
+   margin-top: 10px;
+   border: none;
    border-radius: 12px;
-
-}
-
-button:hover{ 
-   background-color: rgb(233, 214, 237);
-   font-weight: bolder;
-   padding: 10px;
-   border: 1px solid rgb(8, 18, 69);
-}
-#operation{
-   background-color: rgb(236, 221, 243);
-   color: rgb(13, 13, 50);
-   border-radius: 5px;
-   box-shadow: 4px;
-   font-weight: bolder;
-   padding: 10px;
-}
-#num1, #num2{
-   background-color: rgb(188, 234, 235);
-   color: rgb(8, 8, 57);
-}
-
-.btn{
-width: 150px;
-height: 50px;
-background-color: rgb(53, 64, 164);
-border-radius: 10px;
-text-align: center;
-color: aliceblue;
-}
-
-.btn{
-animation: move 15s infinite alternate;
-transition: 3s;
-
-}
-.btn:hover{
-   transform: scale(1.1);
-}
-
-@keyframes move{
-form{
-   transform: translate(-200px);
-} to{
-   transform: translate(200px);
-}
-}
+   background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+   color: #ffffff;
+   font-size: 1.1rem;
+   font-weight: 600;
+   cursor: pointer;
+   box-shadow: 0 10px 20px -5px rgba(168, 85, 247, 0.4);
+   transition: all 0.3s ease;
+ }
+ ‏button:hover, input[type="submit"]:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 15px 25px -5px rgba(168, 85, 247, 0.6);
+   filter: brightness(1.1);
+ }
+ 
+ button:active, input[type="submit"]:active {
+   transform: translateY(0);
+ }
+ 
+ /* Result Area */
+ #result, .result, p:last-child {
+   margin-top: 15px;
+   padding: 16px;
+   background: rgba(56, 189, 248, 0.1);
+   border: 1px solid rgba(56, 189, 248, 0.3);
+   border-radius: 12px;
+   text-align: center;
+   font-size: 1.2rem;
+   font-weight: 700;
+   color: #38bdf8;
+ }
+ 
+ /* Labels */
+ label {
+   font-size: 0.95rem;
+   color: #cbd5e1;
+   margin-bottom: 4px;
+   display: block;
+ }
+ .btn{
+   width: 150px;
+   height: 50px;
+   background-color: rgb(53, 64, 164);
+   border-radius: 10px;
+   text-align: center;
+   color: aliceblue;
+   }
+   
+   .btn{
+   animation: move 15s infinite alternate;
+   transition: 3s;
+   
+   }
+   .btn:hover{
+      transform: scale(1.1);
+   }
+   
+   @keyframes move{
+   form{
+      transform: translate(-200px);
+   } to{
+      transform: translate(200px);
+   }
+   }
+   
