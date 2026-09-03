@@ -1,55 +1,56 @@
 <!doctype html>
-<html long="FA"DIR="RTL">
-    <head>
-    <meta= charset="UTF-8">
-    <meta name ="viewport" content="width=divice-width, intial-scale=1.0">
-    <title> ماشین حساب </title>
-
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ماشین حساب شیشه‌ای</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="calculater.css">
+</head>
+<body>
 
-    </head>
-  
-        <body>
-            
-<h1> چه چیزی را محاسبه میکنید؟</h1>
-<ul>
-<li> جمع</li>
-<li> تفریق</li>
-<li> ضرب</li>
-<li> تقسیم</li>
-<li> باقی مانده</li>
-<li> نوان</li>
-</ul>
-<p> اعداد را به انگلیسی وارد کنید </p>
-<h2 class="btn"> بزن بریم</h2>
+    <!-- لیست و راهنما (شناور در سمت راست/بالا) -->
+    <div class="sidebar-info">
+        <h1>چه چیزی را محاسبه می‌کنید؟</h1>
+        <ul>
+            <li>جمع (+)</li>
+            <li>تفریق (-)</li>
+            <li>ضرب (×)</li>
+            <li>تقسیم (/)</li>
+            <li>باقی مانده (%)</li>
+            <li>توان (**)</li>
+        </ul>
+        <p>اعداد را به انگلیسی وارد کنید</p>
+        <div class="btn-go">بزن بریم</div>
+    </div>
 
-<br><br>
-            <div class="calculate"> 
-                <input id="num1" type="number" placeholder=" عدد اول">
-                <input id="num2" type="number" placeholder="عدد دوم">
-            
-<div class="button">
-<button id="add" >+</button>
-<button id="subtract">-</button>
-<button id="multiplay">*</button>
-
-</div>
-                <select id="operation">
-                   
-<option value="choice">انتخاب کنید </option>
-<option value="/"> تقسیم /</option>
-<option value="%"> باقی مانده %</option>
-<option value="**">توان **</option>
-            </select>
-            <button id="calculate">محاسبه</button>
-
-<p id="result">نتیجه</p>
-
-            </div>
+    <!-- ماشین حساب (دقیقاً مرکز صفحه و لوزی) -->
+    <div class="calculator-container">
+        <h2>ماشین حساب</h2>
         
-          
-            <script src="script.js"></script>
+        <input id="num1" type="number" placeholder="عدد اول">
+        <input id="num2" type="number" placeholder="عدد دوم">
 
-        </body>
-    
-    </html>
+        <div class="btn-group">
+            <button id="add">+</button>
+            <button id="subtract">-</button>
+            <button id="multiplay">*</button>
+        </div>
+
+        <select id="operation">
+            <option value="choice">انتخاب کنید</option>
+            <option value="/">تقسیم /</option>
+            <option value="%">باقی مانده %</option>
+            <option value="**">توان **</option>
+        </select>
+
+        <button id="calculate">محاسبه</button>
+
+        <p id="result">نتیجه</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
