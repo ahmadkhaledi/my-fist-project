@@ -10,16 +10,113 @@
      box-sizing: border-box;
      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
    }
+   <div class="hero-bg">
+    <div class="hero-content">
+        <h1>Web Development</h1>
+        <p>For Beginners</p>
+    </div>
+</div>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #080c14;
+    font-family: Arial, sans-serif;
+}
+
+.hero-bg {
+    position: relative;
+    min-height: 500px;
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        linear-gradient(135deg, #f5b91b 0 38%, transparent 38%),
+        linear-gradient(45deg, #3284d1 0 32%, transparent 32%),
+        linear-gradient(135deg, transparent 0 53%, #090622 53% 72%, transparent 72%),
+        linear-gradient(45deg, transparent 0 75%, #ed1d4e 75%),
+        #111827;
+}
+
+/* نوارهای رنگی بالا */
+.hero-bg::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    z-index: -1;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            transparent 0 55px,
+            rgba(255, 255, 255, 0.12) 55px 85px
+        );
+
+    transform: rotate(-5deg);
+}
+
+/* مثلث / لوزی مرکزی */
+.hero-bg::after {
+    content: "";
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    top: 50%;
+    left: 62%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #05031f 0 50%,
+            #df170d 50% 60%,
+            #ed174d 60% 70%,
+            #f18b00 70%
+        );
+
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: -1;
+}
+
+/* متن */
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    min-height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    margin: 0;
+
+    font-size: clamp(42px, 7vw, 90px);
+    font-weight: 800;
+    letter-spacing: -3px;
+
+    text-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    margin-top: 15px;
+
+    font-size: clamp(20px, 3vw, 35px);
+    font-weight: 500;
+
+    opacity: 0.9;
+}
    
-   body {
-     min-height: 100vh;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
-     background-attachment: fixed;
-     color: #f8fafc;
-     padding: 20px;
    }
    ‏/* Container Card */
 main, .calculator-container, form, div:has(input) {
