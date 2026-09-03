@@ -2,117 +2,289 @@
    Modern Glassmorphic Calculator Styling
    ========================================== */
 
-   @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap');
-
-   * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
-     font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+   @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=
+   
    }
+/* =========================
+   BACKGROUND
+========================= */
 
 * {
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
-    background: #080c14;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    min-height: 100%;
 }
 
-.hero-bg {
-    position: relative;
-    min-height: 500px;
-    overflow: hidden;
-    isolation: isolate;
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
 
     background:
-        linear-gradient(135deg, #f5b91b 0 38%, transparent 38%),
-        linear-gradient(45deg, #3284d1 0 32%, transparent 32%),
-        linear-gradient(135deg, transparent 0 53%, #090622 53% 72%, transparent 72%),
-        linear-gradient(45deg, transparent 0 75%, #ed1d4e 75%),
-        #111827;
+        /* زرد بالا / چپ */
+        linear-gradient(
+            135deg,
+            #f9bd18 0%,
+            #f9bd18 25%,
+            transparent 25%
+        ),
+
+        /* آبی پایین / چپ */
+        linear-gradient(
+            45deg,
+            #3385d1 0%,
+            #3385d1 27%,
+            transparent 27%
+        ),
+
+        /* قرمز سمت راست */
+        linear-gradient(
+            135deg,
+            transparent 0%,
+            transparent 58%,
+            #ed174d 58%,
+            #ed174d 78%,
+            transparent 78%
+        ),
+
+        /* پس زمینه اصلی */
+        #070b18;
+
+    background-attachment: fixed;
+    overflow-x: hidden;
 }
 
-/* نوارهای رنگی بالا */
-.hero-bg::before {
+
+/* =========================
+   لایه های هندسی
+========================= */
+
+body::before {
     content: "";
-    position: absolute;
-    inset: -20%;
-    z-index: -1;
+    position: fixed;
+    inset: -50%;
+    z-index: -2;
 
     background:
         repeating-linear-gradient(
             135deg,
-            transparent 0 55px,
-            rgba(255, 255, 255, 0.12) 55px 85px
+            transparent 0px,
+            transparent 55px,
+            rgba(255,255,255,.10) 56px,
+            rgba(255,255,255,.10) 85px
         );
 
     transform: rotate(-5deg);
+    pointer-events: none;
 }
 
-/* مثلث / لوزی مرکزی */
-.hero-bg::after {
-    content: "";
-    position: absolute;
 
-    width: 430px;
-    height: 430px;
+body::after {
+    content: "";
+    position: fixed;
+
+    width: 650px;
+    height: 650px;
 
     top: 50%;
-    left: 62%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) rotate(45deg);
 
     background:
         linear-gradient(
             135deg,
-            #05031f 0 50%,
-            #df170d 50% 60%,
-            #ed174d 60% 70%,
-            #f18b00 70%
+            #060321 0%,
+            #060321 48%,
+            #e51b12 48%,
+            #e51b12 58%,
+            #ed174d 58%,
+            #ed174d 68%,
+            #f18a00 68%,
+            #f18a00 78%,
+            transparent 78%
         );
 
-    transform: translate(-50%, -50%) rotate(45deg);
     z-index: -1;
+    pointer-events: none;
 }
 
-/* متن */
-.hero-content {
-    position: relative;
-    z-index: 2;
 
-    min-height: 500px;
+/* =========================
+   محتوای اصلی
+========================= */
 
+body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    text-align: center;
-    color: white;
 }
 
-.hero-content h1 {
-    margin: 0;
 
-    font-size: clamp(42px, 7vw, 90px);
-    font-weight: 800;
-    letter-spacing: -3px;
+/* اگر ماشین حسابت داخل یک div اصلی است */
+.container,
+.calculator,
+.calculator-container,
+main {
+    width: min(92%, 500px);
+    margin: 40px auto;
+}
+
+
+/* =========================
+   ظاهر خود ماشین حساب
+========================= */
+
+.calculator,
+.calculator-container {
+    padding: 25px;
+
+    border-radius: 24px;
+
+    background: rgba(7, 13, 28, 0.82);
+
+    border: 1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* =========================
+   دکمه های ماشین حساب
+========================= */
+
+button {
+    border: none;
+    border-radius: 14px;
+
+    min-height: 58px;
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        135deg,
+        #5b61ee,
+        #a747ed
+    );
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.25);
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease,
+        filter .15s ease;
+}
+
+
+button:hover {
+    filter: brightness(1.12);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.35);
+}
+
+
+button:active {
+    transform: scale(.96);
+}
+
+
+/* =========================
+   input ها
+========================= */
+
+input,
+select {
+    width: 100%;
+
+    min-height: 52px;
+
+    padding: 12px 16px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    outline: none;
+
+    background: rgba(5,10,22,.85);
+
+    color: white;
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   عنوان ماشین حساب
+========================= */
+
+h1,
+h2,
+h3 {
+    text-align: center;
+
+    color: white;
 
     text-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.5);
+        0 4px 20px rgba(0,0,0,.5);
 }
 
-.hero-content p {
-    margin-top: 15px;
 
-    font-size: clamp(20px, 3vw, 35px);
-    font-weight: 500;
+/* =========================
+   موبایل
+========================= */
 
-    opacity: 0.9;
+@media (max-width: 600px) {
+
+    body {
+        align-items: flex-start;
+    }
+
+    .container,
+    .calculator,
+    .calculator-container,
+    main {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    .calculator,
+    .calculator-container {
+        padding: 16px;
+
+        border-radius: 20px;
+    }
+
+    button {
+        min-height: 55px;
+        font-size: 18px;
+    }
+
+    body::after {
+        width: 430px;
+        height: 430px;
+    }
 }
-   
-   }
+
    ‏/* Container Card */
 main, .calculator-container, form, div:has(input) {
    background: rgba(255, 255, 255, 0.05);
