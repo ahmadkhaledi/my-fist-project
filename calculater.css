@@ -1,516 +1,341 @@
-/* ================================
-   RESET
-================================ */
+/* ==========================================
+   Modern Glassmorphic Calculator Styling
+   ========================================== */
 
+/* ریست کردن استایل‌های پیش‌فرض */
 * {
     box-sizing: border-box;
-}
-
-html {
-    min-height: 100%;
-}
-
-body {
     margin: 0;
+    padding: 0;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+/* =========================
+   پس‌زمینه اصلی هندسی (طرح دقیق تصویر)
+========================= */
+body {
     min-height: 100vh;
-
-    font-family: Arial, sans-serif;
-    color: white;
-
-    direction: rtl;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding: 35px 15px;
-
-    overflow-x: hidden;
-
-    /* پس زمینه اصلی */
-    background:
-        linear-gradient(
-            135deg,
-            #f9bd18 0%,
-            #f9bd18 25%,
-            transparent 25%
-        ),
-        linear-gradient(
-            45deg,
-            #3385d1 0%,
-            #3385d1 28%,
-            transparent 28%
-        ),
-        linear-gradient(
-            135deg,
-            transparent 0%,
-            transparent 58%,
-            #ed174d 58%,
-            #ed174d 78%,
-            transparent 78%
-        ),
-        #070b18;
-
-    background-attachment: fixed;
-}
-
-
-/* ================================
-   خطوط هندسی روی پس زمینه
-================================ */
-
-body::before {
-    content: "";
-
-    position: fixed;
-    inset: -50%;
-
-    z-index: -2;
-
-    background:
-        repeating-linear-gradient(
-            135deg,
-            transparent 0px,
-            transparent 55px,
-            rgba(255,255,255,0.10) 56px,
-            rgba(255,255,255,0.10) 85px
-        );
-
-    transform: rotate(-5deg);
-
-    pointer-events: none;
-}
-
-
-/* ================================
-   شکل هندسی مرکزی
-================================ */
-
-body::after {
-    content: "";
-
-    position: fixed;
-
-    width: 650px;
-    height: 650px;
-
-    top: 50%;
-    left: 50%;
-
-    transform:
-        translate(-50%, -50%)
-        rotate(45deg);
-
-    background:
-        linear-gradient(
-            135deg,
-            #060321 0%,
-            #060321 48%,
-            #e51b12 48%,
-            #e51b12 58%,
-            #ed174d 58%,
-            #ed174d 68%,
-            #f18a00 68%,
-            #f18a00 78%,
-            transparent 78%
-        );
-
-    z-index: -1;
-
-    pointer-events: none;
-}
-
-
-/* ================================
-   عنوان
-================================ */
-
-h1 {
-    width: 100%;
-    max-width: 500px;
-
-    text-align: center;
-
-    font-size: 28px;
-
-    margin: 10px 0 15px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #38bdf8,
-            #818cf8,
-            #c084fc
-        );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    text-shadow: 0 5px 20px rgba(0,0,0,.4);
-}
-
-
-/* ================================
-   لیست عملیات
-================================ */
-
-ul {
-    width: 100%;
-    max-width: 500px;
-
-    margin: 0 0 15px;
-
-    padding: 18px 35px;
-
-    border-radius: 18px;
-
-    background: rgba(5, 10, 25, 0.65);
-
-    border: 1px solid rgba(255,255,255,.15);
-
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.3);
-}
-
-li {
-    margin: 7px 0;
-
-    font-size: 16px;
-
-    color: #e2e8f0;
-}
-
-
-/* ================================
-   توضیحات
-================================ */
-
-body > p {
-    text-align: center;
-
-    margin: 10px 0;
-
-    color: #cbd5e1;
-
-    font-size: 15px;
-}
-
-
-/* ================================
-   دکمه بزن بریم
-================================ */
-
-.btn {
-    width: 150px;
-    height: 50px;
-
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    margin: 10px auto;
-
-    background:
-        linear-gradient(
-            135deg,
-            #6366f1,
-            #a855f7
-        );
-
-    border-radius: 12px;
-
-    color: white;
-
-    text-align: center;
-
-    box-shadow:
-        0 10px 25px rgba(99,102,241,.35);
-
-    cursor: pointer;
-
-    animation: move 15s infinite alternate;
-
-    transition: .3s;
+    position: relative;
+    background-color: #070b18;
+    overflow-x: hidden;
+    color: #ffffff;
+    padding: 20px;
 }
 
-.btn:hover {
-    transform: scale(1.08);
+/* لایه‌های رنگی پس‌زمینه */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        /* زرد بالا چپ */
+        linear-gradient(135deg, #fabb18 0%, #fabb18 30%, transparent 30%),
+        /* آبی پایین چپ */
+        linear-gradient(45deg, #3282d3 0%, #3282d3 32%, transparent 32%),
+        /* قرمز و نارنجی سمت راست */
+        linear-gradient(135deg, transparent 55%, #e61c24 55%, #e61c24 70%, #f18800 70%, #f18800 85%, transparent 85%);
+    background-attachment: fixed;
 }
 
+/* لوزی مشکی بزرگ در مرکز تصویر */
+body::after {
+    content: "";
+    position: fixed;
+    width: min(85vw, 620px);
+    height: min(85vw, 620px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #0b0d1b;
+    border-radius: 40px;
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.8),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.08);
+    z-index: -1;
+    pointer-events: none;
+}
 
-/* ================================
-   خود ماشین حساب
-================================ */
-
-.calculate {
-    width: 100%;
-    max-width: 430px;
-
-    margin: 20px auto;
-
-    padding: 25px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 15px;
-
-    border-radius: 25px;
-
-    background:
-        rgba(7, 13, 28, 0.78);
-
-    border:
-        1px solid rgba(255,255,255,.18);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.5),
-        inset 0 1px 1px rgba(255,255,255,.08);
-
+/* =========================
+   باکس ماشین حساب شیشه‌ای (وسط لوزی)
+========================= */
+.calculator-card {
+    width: min(92%, 460px);
+    padding: 35px 30px;
+    background: rgba(18, 24, 43, 0.55);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: 28px;
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.6),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3),
+        0 0 40px rgba(99, 102, 241, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2;
+    transition: all 0.3s ease;
 }
 
+.calculator-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 30px 70px rgba(0, 0, 0, 0.7),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4),
+        0 0 50px rgba(99, 102, 241, 0.25);
+}
 
-/* ================================
-   Input
-================================ */
+.calc-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #38bdf8, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+/* =========================
+   ورودی‌ها (Inputs)
+========================= */
+.inputs-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
 
 input[type="number"] {
     width: 100%;
-
-    min-height: 55px;
-
     padding: 14px 18px;
-
-    border-radius: 13px;
-
-    border:
-        1px solid rgba(255,255,255,.15);
-
-    outline: none;
-
-    background:
-        rgba(15,23,42,.8);
-
-    color: white;
-
-    font-size: 17px;
-
-    text-align: center;
-
+    background: rgba(10, 15, 30, 0.65);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    color: #ffffff;
+    font-size: 1.05rem;
     direction: ltr;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-    transition: .3s;
+input[type="number"]::placeholder {
+    color: #94a3b8;
+    direction: rtl;
+    font-size: 0.95rem;
 }
 
 input[type="number"]:focus {
-    border-color: #818cf8;
-
-    box-shadow:
-        0 0 0 4px rgba(129,140,248,.2);
+    border-color: #38bdf8;
+    background: rgba(15, 23, 42, 0.85);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
 }
 
-
-/* ================================
-   دکمه های + - *
-================================ */
-
-.button {
+/* =========================
+   دکمه‌های شیشه‌ای و خاص عملیات
+========================= */
+.operations-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 }
 
-.button button {
-    width: 100%;
-
-    min-height: 55px;
-
-    margin: 0;
-}
-
-
-/* ================================
-   تمام دکمه ها
-================================ */
-
-button {
-    border: none;
-
-    border-radius: 13px;
-
-    padding: 14px;
-
-    color: white;
-
-    font-size: 20px;
-
+.op-btn {
+    height: 54px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    font-size: 1.5rem;
     font-weight: bold;
-
     cursor: pointer;
-
-    background:
-        linear-gradient(
-            135deg,
-            #5b61ee,
-            #a747ed
-        );
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.25);
-
-    transition:
-        transform .15s ease,
-        box-shadow .15s ease,
-        filter .15s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:hover {
-    filter: brightness(1.12);
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 12px 28px rgba(0,0,0,.35);
+.op-btn:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(168, 85, 247, 0.4));
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(168, 85, 247, 0.4);
 }
 
-button:active {
-    transform: scale(.96);
+.op-btn:active {
+    transform: translateY(-1px) scale(0.98);
 }
 
-
-/* ================================
-   انتخاب عملیات
-================================ */
+/* منوی کشویی تکمیلی */
+.select-wrapper {
+    grid-column: span 3;
+    margin-top: 4px;
+}
 
 select {
     width: 100%;
-
-    min-height: 55px;
-
-    padding: 12px 16px;
-
-    border-radius: 13px;
-
-    border:
-        1px solid rgba(255,255,255,.15);
-
-    outline: none;
-
-    background:
-        #0b1222;
-
-    color: white;
-
-    font-size: 16px;
-
+    padding: 12px 18px;
+    background: rgba(10, 15, 30, 0.65);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    color: #f8fafc;
+    font-size: 1rem;
     cursor: pointer;
-
-    direction: rtl;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: left 14px center;
+    transition: all 0.3s ease;
 }
 
-
-/* ================================
-   دکمه محاسبه
-================================ */
-
-#calculate {
-    width: 100%;
-
-    min-height: 58px;
-
-    font-size: 19px;
+select:focus {
+    border-color: #a855f7;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
 }
 
+select option {
+    background: #0f172a;
+    color: white;
+}
 
-/* ================================
-   نتیجه
-================================ */
-
-#result {
+/* =========================
+   دکمه اصلی محاسبه
+========================= */
+.calc-btn {
     width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    background-size: 200% auto;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);
+    transition: all 0.4s ease;
+}
 
-    margin: 0;
+.calc-btn:hover {
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(168, 85, 247, 0.6);
+}
 
-    padding: 17px;
+.calc-btn:active {
+    transform: translateY(0);
+}
 
-    border-radius: 13px;
-
+/* =========================
+   باکس نمایش نتیجه
+========================= */
+.result-box {
+    padding: 16px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 14px;
     text-align: center;
-
-    font-size: 19px;
-
-    font-weight: bold;
-
+    font-size: 1.2rem;
+    font-weight: 700;
     color: #38bdf8;
-
-    background:
-        rgba(56,189,248,.08);
-
-    border:
-        1px solid rgba(56,189,248,.3);
+    backdrop-filter: blur(5px);
 }
 
-
-/* ================================
-   انیمیشن
-================================ */
-
-@keyframes move {
-
-    from {
-        transform: translateX(-150px);
-    }
-
-    to {
-        transform: translateX(150px);
-    }
+.result-value {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-right: 8px;
 }
 
+/* =========================
+   بخش راهنما (سمت راست صفحه)
+========================= */
+.sidebar-info {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 280px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    padding: 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
 
-/* ================================
-   موبایل
-================================ */
+.sidebar-info h1 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #f8fafc;
+}
 
-@media (max-width: 600px) {
+.features-list {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.features-list li {
+    padding: 6px 0;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.note {
+    font-size: 0.85rem;
+    color: #fabb18;
+    margin-bottom: 15px;
+}
+
+.btn-action {
+    width: 100%;
+    padding: 10px;
+    background: #3540a4;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn-action:hover {
+    transform: scale(1.05);
+    background: #4351ca;
+}
+
+/* =========================
+   واکنش‌گرایی (Responsive for Mobile)
+========================= */
+@media (max-width: 1024px) {
+    .sidebar-info {
+        position: static;
+        transform: none;
+        margin-bottom: 30px;
+        width: min(92%, 460px);
+        max-width: none;
+    }
 
     body {
-        padding: 20px 10px;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 40px;
     }
+}
 
-    h1 {
-        font-size: 24px;
+@media (max-width: 500px) {
+    .calculator-card {
+        padding: 25px 20px;
     }
-
-    .calculate {
-        width: 100%;
-
-        padding: 18px;
-
-        border-radius: 20px;
+    
+    .op-btn {
+        height: 48px;
+        font-size: 1.2rem;
     }
-
-    .button {
-        gap: 8px;
-    }
-
-    button {
-        min-height: 52px;
-    }
-
-    body::after {
-        width: 430px;
-        height: 430px;
-    }
-
-    .btn {
-        animation-duration: 12s;
-    }
+   
 }
