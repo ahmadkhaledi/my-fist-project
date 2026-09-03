@@ -1,8 +1,7 @@
 /* ==========================================
-   Modern Glassmorphic Calculator Styling
+   Modern Glassmorphic Diamond Calculator
    ========================================== */
 
-/* ریست کردن استایل‌های پیش‌فرض */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,9 +9,9 @@
     font-family: 'Vazirmatn', sans-serif;
 }
 
-/* =========================
-   پس‌زمینه اصلی هندسی (طرح دقیق تصویر)
-========================= */
+/* ------------------------------------------
+   پس‌زمینه اصلی و تنظیم مرکزیت کامل
+------------------------------------------ */
 body {
     min-height: 100vh;
     width: 100vw;
@@ -23,10 +22,9 @@ body {
     background-color: #070b18;
     overflow-x: hidden;
     color: #ffffff;
-    padding: 20px;
 }
 
-/* لایه‌های رنگی پس‌زمینه */
+/* گرادینت‌های رنگی هندسی در زوایا */
 body::before {
     content: "";
     position: fixed;
@@ -34,7 +32,7 @@ body::before {
     z-index: -2;
     background:
         /* زرد بالا چپ */
-        linear-gradient(135deg, #fabb18 0%, #fabb18 30%, transparent 30%),
+        linear-gradient(135deg, #fabb18 0%, #fabb18 32%, transparent 32%),
         /* آبی پایین چپ */
         linear-gradient(45deg, #3282d3 0%, #3282d3 32%, transparent 32%),
         /* قرمز و نارنجی سمت راست */
@@ -42,159 +40,87 @@ body::before {
     background-attachment: fixed;
 }
 
-/* لوزی مشکی بزرگ در مرکز تصویر */
+/* لوزی مشکی بزرگ دقیقاً در وسط */
 body::after {
     content: "";
     position: fixed;
-    width: min(85vw, 620px);
-    height: min(85vw, 620px);
+    width: min(85vw, 550px);
+    height: min(85vw, 550px);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
-    background: #0b0d1b;
+    background: #090c1a;
     border-radius: 40px;
     box-shadow: 
-        0 30px 80px rgba(0, 0, 0, 0.8),
+        0 30px 80px rgba(0, 0, 0, 0.85),
         inset 0 0 0 2px rgba(255, 255, 255, 0.08);
     z-index: -1;
     pointer-events: none;
 }
 
-/* =========================
-   باکس ماشین حساب شیشه‌ای (وسط لوزی)
-========================= */
-.calculator-card {
-    width: min(92%, 460px);
-    padding: 35px 30px;
-    background: rgba(18, 24, 43, 0.55);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1.5px solid rgba(255, 255, 255, 0.18);
+/* ------------------------------------------
+   کارت ماشین حساب (شیشه‌ای شفاف روی لوزی)
+------------------------------------------ */
+.calculator-container {
+    width: min(90%, 420px);
+    padding: 30px 25px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
     border-radius: 28px;
     box-shadow: 
-        0 25px 60px rgba(0, 0, 0, 0.6),
-        inset 0 1px 1px rgba(255, 255, 255, 0.3),
-        0 0 40px rgba(99, 102, 241, 0.15);
+        0 20px 50px rgba(0, 0, 0, 0.6),
+        inset 0 1px 2px rgba(255, 255, 255, 0.35);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     z-index: 2;
-    transition: all 0.3s ease;
 }
 
-.calculator-card:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 
-        0 30px 70px rgba(0, 0, 0, 0.7),
-        inset 0 1px 2px rgba(255, 255, 255, 0.4),
-        0 0 50px rgba(99, 102, 241, 0.25);
-}
-
-.calc-title {
+.calculator-container h2 {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #38bdf8, #a855f7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: -0.5px;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    margin-bottom: 5px;
 }
 
-/* =========================
-   ورودی‌ها (Inputs)
-========================= */
-.inputs-group {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+/* ------------------------------------------
+   ورودی‌ها (Inputs) و Dropdown
+------------------------------------------ */
+input[type="number"], select {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(10, 15, 30, 0.65);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
 input[type="number"] {
-    width: 100%;
-    padding: 14px 18px;
-    background: rgba(10, 15, 30, 0.65);
-    border: 1.5px solid rgba(255, 255, 255, 0.12);
-    border-radius: 14px;
-    color: #ffffff;
-    font-size: 1.05rem;
     direction: ltr;
     text-align: center;
-    outline: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 input[type="number"]::placeholder {
-    color: #94a3b8;
+    color: #a0aec0;
     direction: rtl;
-    font-size: 0.95rem;
 }
 
-input[type="number"]:focus {
+input[type="number"]:focus, select:focus {
     border-color: #38bdf8;
     background: rgba(15, 23, 42, 0.85);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-}
-
-/* =========================
-   دکمه‌های شیشه‌ای و خاص عملیات
-========================= */
-.operations-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-}
-
-.op-btn {
-    height: 54px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.03));
-    backdrop-filter: blur(10px);
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.op-btn:hover {
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(168, 85, 247, 0.4));
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 12px 25px rgba(168, 85, 247, 0.4);
-}
-
-.op-btn:active {
-    transform: translateY(-1px) scale(0.98);
-}
-
-/* منوی کشویی تکمیلی */
-.select-wrapper {
-    grid-column: span 3;
-    margin-top: 4px;
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
 }
 
 select {
-    width: 100%;
-    padding: 12px 18px;
-    background: rgba(10, 15, 30, 0.65);
-    border: 1.5px solid rgba(255, 255, 255, 0.12);
-    border-radius: 14px;
-    color: #f8fafc;
-    font-size: 1rem;
     cursor: pointer;
-    outline: none;
-    appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-    background-repeat: no-repeat;
-    background-position: left 14px center;
-    transition: all 0.3s ease;
-}
-
-select:focus {
-    border-color: #a855f7;
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+    direction: rtl;
 }
 
 select option {
@@ -202,140 +128,139 @@ select option {
     color: white;
 }
 
-/* =========================
-   دکمه اصلی محاسبه
-========================= */
-.calc-btn {
-    width: 100%;
-    padding: 16px;
-    border: none;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-    background-size: 200% auto;
-    color: #ffffff;
-    font-size: 1.2rem;
-    font-weight: 700;
+/* ------------------------------------------
+   دکمه‌های عملیات (دکمه‌های شیشه‌ای نئونی)
+------------------------------------------ */
+.btn-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+button {
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: 14px;
+    padding: 12px;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);
-    transition: all 0.4s ease;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s ease;
 }
 
-.calc-btn:hover {
-    background-position: right center;
+button:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.5), rgba(168, 85, 247, 0.5));
+    border-color: rgba(255, 255, 255, 0.6);
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(168, 85, 247, 0.6);
+    box-shadow: 0 12px 25px rgba(168, 85, 247, 0.5);
 }
 
-.calc-btn:active {
+button:active {
     transform: translateY(0);
 }
 
-/* =========================
-   باکس نمایش نتیجه
-========================= */
-.result-box {
-    padding: 16px;
-    background: rgba(56, 189, 248, 0.08);
-    border: 1px solid rgba(56, 189, 248, 0.3);
+/* دکمه اصلی محاسبه */
+#calculate {
+    width: 100%;
+    margin-top: 5px;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    border: none;
+    font-size: 1.1rem;
+    padding: 14px;
+}
+
+#calculate:hover {
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    box-shadow: 0 12px 30px rgba(168, 85, 247, 0.7);
+}
+
+/* ------------------------------------------
+   باکس نتیجه
+------------------------------------------ */
+#result {
+    padding: 14px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1.5px solid rgba(56, 189, 248, 0.4);
     border-radius: 14px;
     text-align: center;
     font-size: 1.2rem;
     font-weight: 700;
     color: #38bdf8;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
 }
 
-.result-value {
-    color: #ffffff;
-    font-size: 1.4rem;
-    margin-right: 8px;
-}
-
-/* =========================
-   بخش راهنما (سمت راست صفحه)
-========================= */
+/* ------------------------------------------
+   بخش راهنما (در موبایل بالای صفحه، در دسکتاپ سمت راست)
+------------------------------------------ */
 .sidebar-info {
     position: absolute;
+    top: 40px;
     right: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-    max-width: 280px;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    padding: 24px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 20px;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    max-width: 260px;
 }
 
 .sidebar-info h1 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
     color: #f8fafc;
 }
 
-.features-list {
+.sidebar-info ul {
     list-style: none;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-.features-list li {
-    padding: 6px 0;
+.sidebar-info li {
+    font-size: 0.9rem;
     color: #cbd5e1;
-    font-size: 0.95rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 3px 0;
 }
 
-.note {
-    font-size: 0.85rem;
+.sidebar-info p {
+    font-size: 0.8rem;
     color: #fabb18;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
-.btn-action {
-    width: 100%;
-    padding: 10px;
+.btn-go {
     background: #3540a4;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-weight: 600;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
     cursor: pointer;
-    transition: transform 0.3s ease, background 0.3s ease;
+    transition: transform 0.2s;
 }
 
-.btn-action:hover {
+.btn-go:hover {
     transform: scale(1.05);
-    background: #4351ca;
 }
 
-/* =========================
-   واکنش‌گرایی (Responsive for Mobile)
-========================= */
-@media (max-width: 1024px) {
-    .sidebar-info {
-        position: static;
-        transform: none;
-        margin-bottom: 30px;
-        width: min(92%, 460px);
-        max-width: none;
-    }
-
+/* تنظیمات واکنش‌گرایی موبایل */
+@media (max-width: 900px) {
     body {
         flex-direction: column;
         justify-content: flex-start;
-        padding-top: 40px;
+        padding-top: 30px;
+        overflow-y: auto;
     }
-}
 
-@media (max-width: 500px) {
-    .calculator-card {
-        padding: 25px 20px;
+    .sidebar-info {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 30px;
+        width: min(90%, 420px);
+        max-width: none;
     }
-    
-    .op-btn {
-        height: 48px;
-        font-size: 1.2rem;
-    }
-   
 }
